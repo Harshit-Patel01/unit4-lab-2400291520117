@@ -1,0 +1,36 @@
+---
+- name: Configure web server
+  hosts: local
+  become: yes
+  vars:
+    site_message: "Deployed by Ansible"
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Create group webteam
+      group:
+        name: webteam
+        state: present
+
+    - name: Create deploy user
+      user:
+        name: deploy
+        groups: webteam
+        append: yes
+        shell: /bin/bash
+
+    - name: Deploy site page
+      copy:
+        content: "<h1>{{ site_message }}</h1>\n"
+        dest: /var/www/html/index.html
+        mode: "0644"
+
+    - name: Ensure nginx is running and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
