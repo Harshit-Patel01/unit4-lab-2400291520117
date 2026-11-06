@@ -1,0 +1,18 @@
+# Report tooling (internal, not part of the submission)
+report/
+*.docx
+~$*
+*.docx.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local artifacts
+rendered.yaml
+*.log
+.DS_Store
+.vscode/
+.idea/
