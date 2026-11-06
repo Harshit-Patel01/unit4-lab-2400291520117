@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Local lab-only files (not part of the CI/CD repo)
+values-novabank.yaml
+rendered.yaml
+*.docx
+screenshots/
+
+# Docker
+*.log
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
